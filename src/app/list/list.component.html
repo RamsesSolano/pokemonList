@@ -1,0 +1,69 @@
+<section>
+    <div class="row">
+        <div class="column-6">
+            <label for="search"> Listado de Pokemon </label>
+            <br>
+            <input 
+            type="text" 
+            name="search" 
+            id="search" 
+            placeholder="Buscar" 
+            (keyup)="onKeypressEvent()"
+            [(ngModel)]="searchPokemon"
+            >
+        </div>
+
+        <div class="column-6">
+            <button class="btn main-btn position-right" (click)="addPokemon()" >
+                <fa-icon [icon]="faPlus" ></fa-icon>
+                Nuevo
+            </button>
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="column">
+            <table>
+
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Imagen
+                    </th>
+                    <th>
+                        Ataque
+                    </th>
+                    <th>
+                        Defensa 
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+                
+                <tr *ngFor="let pokemon of pokemonList" >
+                    <td>
+                        {{ pokemon.name }}
+                    </td>
+                    <td class="table-elements-container">
+                        <img src="{{pokemon.image}}"  alt="Pokemon image">
+                    </td>
+                    <td>
+                        {{ pokemon.attack }}
+                    </td>
+                    <td>
+                        {{ pokemon.defense }}
+                    </td>
+                    <td class="table-elements-container">
+
+                        <a class="action" (click)="editPokemon(pokemon)" > <fa-icon [icon]="faPencil" ></fa-icon> </a>
+                        <a class="action" (click)="deletePokemon(pokemon)" > <fa-icon [icon]="faTrash" ></fa-icon> </a>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,86 @@
+<section>
+
+    <div class="row">
+        <div class="column center">
+            <h3 *ngIf="!update" >
+                Nuevo Pokemon
+            </h3>
+            <h3 *ngIf="update" >
+                Actualizar Pokemon
+            </h3>
+        </div>
+    </div>
+
+    <form [formGroup]="pokemonForm" (ngSubmit)="addPokemon()" >
+        <div class="row">
+            <div class="column-6 center">
+                <label for="name"> Nombre </label>
+                
+                <input 
+                type="text" 
+                name="name" 
+                id="name" 
+                placeholder="Nombre"
+                formControlName="name" >
+            </div>
+            <div class="column-6 center">
+    
+                <label for="atack"> Ataque </label>
+                
+                <input 
+                min="1" 
+                max="100" 
+                value="50"
+                type="range" 
+                name="atack" 
+                id="atack" 
+                placeholder="Nombre"
+                formControlName="attack" >
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="column-6 center">
+                <label for="image"> Imagen </label>
+                
+                <input 
+                type="text" 
+                name="image" 
+                id="image" 
+                placeholder="Url"
+                formControlName="urlImage" >
+            </div>
+            <div class="column-6 center">
+                <label for="defense"> Defensa </label>
+                
+                <input 
+                min="1" 
+                max="100" 
+                value="50"
+                type="range" 
+                name="defense" 
+                id="defense" 
+                placeholder="Nombre"
+                formControlName="defense" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="column center">
+
+                <button type="submit" class="btn main-btn" [disabled]="!this.pokemonForm.valid">
+                    <fa-icon [icon]="faFloppyDisk" ></fa-icon>
+                    Guardar
+                </button>
+
+            </div>
+
+            <div class="column center" >
+                <button class="btn main-btn" (click)="clearData()" >
+                    <fa-icon [icon]="faX" ></fa-icon>
+                    Cancelar
+                </button>
+            </div>
+
+        </div>
+    </form>
+</section>
